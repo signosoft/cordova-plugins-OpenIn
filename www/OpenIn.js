@@ -1,8 +1,4 @@
-var exec = require('cordova/exec');
 
-exports.coolMethod = function(arg0, success, error) {
-    exec(success, error, "OpenIn", "coolMethod", [arg0]);
-};
 var exec = require('cordova/exec'),
   channel = require('cordova/channel'),
 
@@ -37,7 +33,7 @@ var openin = {
       callback(msg.data);
     };
 
-    exec(innerCallback, null, PLUGIN_NAME, pluginNativeMethod.SUBSCRIBE);
+    exec(innerCallback, null, PLUGIN_NAME, pluginNativeMethod.SUBSCRIBE,[]);
   },
 
   /**
@@ -46,11 +42,9 @@ var openin = {
    * @param {String} eventName - from what event we are unsubscribing
    */
   unsubscribe: function(eventName) {
-    if (!eventName) {
-      eventName = DEFAULT_EVENT_NAME;
-    }
+ 
 
-    exec(null, null, PLUGIN_NAME, pluginNativeMethod.UNSUBSCRIBE);
+    exec(null, null, PLUGIN_NAME, pluginNativeMethod.UNSUBSCRIBE,[]);
   }
 };
 
