@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <Cordova/CDVPlugin.h>
+#import <Cordova/CDV.h>
 
 @interface OpenIn : CDVPlugin {
     
@@ -19,9 +19,7 @@
 @property (strong) NSString* callbackId;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
-- (void)applicationDidBecomeActive:(UIApplication *)application;
-- (void)tryToConsumeEvent;
 - (void)jsSubscribeForEvent:(CDVInvokedUrlCommand *)command;
-- (void)jsUnsubscribeFromEvent:(CDVInvokedUrlCommand *)command;
+
 
 @end

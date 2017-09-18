@@ -10,26 +10,20 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.launchedURL = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
+    if (self.launchedURL != nil) {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:self.launchedURL];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
+
+    }
+
+self.launchedURL = nil;
+
     
   
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    if (self.launchedURL) {
-        [self tryToConsumeEvent];
-        self.launchedURL = nil;
-    }
-}
 
-- (void)tryToConsumeEvent {
 
-    
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:self.launchedURL];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
-    
-    
-}
 
 #pragma mark Methods, available from JavaScript side
 
@@ -38,14 +32,10 @@
     CDVPluginResult* pluginResult = nil;
    
     self.callbackId = command.callbackId;
-    [self tryToConsumeEvent];
+    self.launchedURL = nil;
 }
 
-- (void)jsUnsubscribeFromEvent:(CDVInvokedUrlCommand *)command {
 
-    
-
-}
 
 
 
