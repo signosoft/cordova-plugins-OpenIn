@@ -2,7 +2,8 @@
 
 #import <Cordova/CDV.h>
 #import <Foundation/Foundation.h>
-
+#import <Cordova/CDVPlugin.h>
+#import <Cordova/CDVPluginResult.h>
 
 @interface OpenIn : CDVPlugin {
   NSString *_subscribers;
