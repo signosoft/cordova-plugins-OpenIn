@@ -1,6 +1,8 @@
 /********* OpenIn.m Cordova Plugin Implementation *******/
 
 #import <Cordova/CDV.h>
+#import <Foundation/Foundation.h>
+#import <Cordova/CDVPlugin.h>
 
 @interface OpenIn : CDVPlugin {
   NSString *_subscribers;
