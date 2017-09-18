@@ -34,18 +34,9 @@ var openin = {
     };
 
     exec(innerCallback, null, PLUGIN_NAME, pluginNativeMethod.SUBSCRIBE,[]);
-  },
-
-  /**
-   * Unsubscribe from the event.
-   *
-   * @param {String} eventName - from what event we are unsubscribing
-   */
-  unsubscribe: function(eventName) {
- 
-
-    exec(null, null, PLUGIN_NAME, pluginNativeMethod.UNSUBSCRIBE,[]);
   }
+
+ 
 };
 
 module.exports = openin;
