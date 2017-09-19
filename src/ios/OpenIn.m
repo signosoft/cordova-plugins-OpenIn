@@ -13,7 +13,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     if (self.launchedURL) {
-         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:self.launchedURL];
+         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString: NSString *URLstring=[self.launchedURL absoluteString]];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
         self.launchedURL = nil;
     }
