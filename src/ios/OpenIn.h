@@ -9,11 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Cordova/CDV.h>
 
-@interface OpenIn : CDVPlugin {
-    
-    NSString* callbackId;
-    NSURL* launchedURL;
-}
+@interface OpenIn : CDVPlugin
 
 @property (nonatomic, strong) NSURL* launchedURL;
 @property (strong) NSString* callbackId;
