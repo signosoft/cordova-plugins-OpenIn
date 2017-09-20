@@ -13,8 +13,11 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    CDVPluginResult* pluginResult = nil;
+    NSString *URLstring=[self.launchedURL absoluteString];
+    
     if (self.launchedURL) {
-         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString: NSString *URLstring=[self.launchedURL absoluteString]];
+         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString: URLstring];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
         self.launchedURL = nil;
     }
@@ -24,7 +27,6 @@
 
 - (void)jsSubscribeForEvent:(CDVInvokedUrlCommand *)command {
 
-    CDVPluginResult* pluginResult = nil;
    
     self.callbackId = command.callbackId;
     self.launchedURL = nil;
