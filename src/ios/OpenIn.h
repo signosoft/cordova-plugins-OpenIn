@@ -15,7 +15,7 @@
 @property (strong) NSString* callbackId;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
-- (void)applicationDidBecomeActive:(UIApplication *)application
+- (void)applicationDidBecomeActive:(UIApplication *)application;
 - (void)jsSubscribeForEvent:(CDVInvokedUrlCommand *)command;
 
 @end
