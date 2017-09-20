@@ -1,0 +1,25 @@
+{
+  "name": "OpenIn",
+  "version": "0.0.1",
+  "description": "",
+  "cordova": {
+    "id": "cordova-plugin-OpenIn",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhdmulder/cordova-plugins-OpenIn.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "Denis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lhdmulder/cordova-plugins-OpenIn/issues"
+  },
+  "homepage": "https://github.com/lhdmulder/cordova-plugins-OpenIn#readme"
+}
