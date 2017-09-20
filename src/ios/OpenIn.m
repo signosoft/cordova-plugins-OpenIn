@@ -7,6 +7,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.launchedURL = [launchOptions objectForKey:UIApplicationLaunchOptionsURLKey];
+    return YES;
 
 }
 
