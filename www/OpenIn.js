@@ -30,7 +30,7 @@ var openin = {
  
 
     var innerCallback = function(msg) {
-      callback(msg.data);
+      callback(msg);
     };
 
     exec(innerCallback, null, PLUGIN_NAME, pluginNativeMethod.SUBSCRIBE,[]);
