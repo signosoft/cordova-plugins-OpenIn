@@ -1,6 +1,6 @@
 //
 //  OpenIn.h
-//  
+//
 //
 //  Created by Denis Mulder on 9/18/17.
 //
@@ -14,8 +14,8 @@
 @property (nonatomic, strong) NSURL* launchedURL;
 @property (strong) NSString* callbackId;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
-- (void)applicationDidBecomeActive:(UIApplication *)application;
+
+- (BOOL)handleUrl:(NSURL *)url;
 - (void)jsSubscribeForEvent:(CDVInvokedUrlCommand *)command;
 
 @end
