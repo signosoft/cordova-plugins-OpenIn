@@ -17,11 +17,16 @@
 
 - (BOOL)handleUrl:(NSURL *)url {
     CDVPluginResult* pluginResult = nil;
-    NSString *URLstring=[url absoluteString];
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString: URLstring];
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
-    url = nil;
-    return YES;
+    if (! [[url scheme] isEqual:@"file"]) {
+        return NO;
+    } else {
+        NSString *Filestring=[[url path] lastPathComponent];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString: Filestring];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
+        url = nil;
+        return YES;
+    }
+   
 }
 
 @end
