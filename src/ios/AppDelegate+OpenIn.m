@@ -38,6 +38,7 @@ static NSString *const PLUGIN_NAME = @"OpenIn";
         return NO;
     }
     [plugin handleUrl:url];
+            NSLog(@"The code runs through here!");
             [self sw_application:app
                               openURL:url
                               options:options];
