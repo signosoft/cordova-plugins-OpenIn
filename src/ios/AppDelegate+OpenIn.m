@@ -23,16 +23,25 @@ static NSString *const PLUGIN_NAME = @"OpenIn";
                               openURL:url
                               options:options];
     if (url == nil) {
-        return returnvalue;
+        [self sw_application:app
+                              openURL:url
+                              options:options];
+                return NO;
     }
     
     // get instance of the plugin and let it handle the url object
     OpenIn *plugin = [self.viewController getCommandInstance:PLUGIN_NAME];
     if (plugin == nil) {
-        return returnvalue;
+                [self sw_application:app
+                              openURL:url
+                              options:options];
+        return NO;
     }
     [plugin handleUrl:url];
-    return returnvalue;
+            [self sw_application:app
+                              openURL:url
+                              options:options];
+    return YES;
 }
 
 void defaultMethodIMP (id self, SEL _cmd) { /* nothing to do here */ }
