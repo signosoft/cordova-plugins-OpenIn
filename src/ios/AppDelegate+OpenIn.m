@@ -9,6 +9,7 @@
 #import "AppDelegate+OpenIn.h"
 #import "OpenIn.h"
 #import <objc/runtime.h>
+#import "JRSwizzle.h"
 
 @implementation AppDelegate (OpenIn)
 
@@ -34,14 +35,15 @@ static NSString *const PLUGIN_NAME = @"OpenIn";
     [plugin handleUrl:url];
     return returnvalue;
 }
-
 + (void)load
 {
-    Method original, swizzled;
-    
-    original = class_getInstanceMethod(self, @selector(application:openURL:options:));
-    swizzled = class_getInstanceMethod(self, @selector(sw_application:openURL:options:));
-    method_exchangeImplementations(original, swizzled);
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSError *error;
+        BOOL result = [[self class] jr_swizzleMethod:@selector(application:openURL:options:) withMethod:@selector(sw_application:openURL:options:) error:&error];
+        if (!result || error) {
+            NSLog(@"Can't swizzle methods - %@", [error description]);
+        }
+    });
 }
-
 @end
