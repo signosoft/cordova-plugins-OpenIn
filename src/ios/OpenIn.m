@@ -23,6 +23,7 @@
         NSString *Filestring=[[url path] lastPathComponent];
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString: Filestring];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
+        url=nil;
         return YES;
     }
    
