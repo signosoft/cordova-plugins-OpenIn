@@ -1,1 +1,1 @@
-# cordovan-plugins-OpenIn
+# cordova-plugins-OpenIn
