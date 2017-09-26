@@ -47,7 +47,7 @@ static NSString *const PLUGIN_NAME = @"OpenIn";
     return YES;
 }
 
-void defaultMethodIMP (id self, SEL _cmd) { /* nothing to do here */ }
+// void defaultMethodIMP (id self, SEL _cmd) { /* nothing to do here */ }
 
 
 + (void) load
@@ -59,7 +59,7 @@ void defaultMethodIMP (id self, SEL _cmd) { /* nothing to do here */ }
 }
 + (void) exchange_methods:(SEL)original swizzled:(SEL)swizzled
 {
-    class_addMethod(self, original, (IMP) defaultMethodIMP, "v@:");
+  //  class_addMethod(self, original, (IMP) defaultMethodIMP, "v@:");
 
     Method original_method = class_getInstanceMethod(self, original);
     Method swizzled_method = class_getInstanceMethod(self, swizzled);
