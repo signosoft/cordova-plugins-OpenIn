@@ -18,10 +18,7 @@ static NSString *const PLUGIN_NAME = @"OpenIn";
                openURL:(NSURL *)url
                options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options;
 {
-    BOOL returnvalue;
-    returnvalue= [self sw_application:app
-                              openURL:url
-                              options:options];
+
     if (url == nil) {
 
         return NO;
