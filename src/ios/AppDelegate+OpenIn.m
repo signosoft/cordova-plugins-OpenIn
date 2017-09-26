@@ -76,7 +76,7 @@ void DumpObjcMethods(Class clz) {
 {
 
  DumpObjcMethods(self);
- DumpObjcMethods(object_getClass(yourClass) /* Metaclass */);           
+ DumpObjcMethods(object_getClass(self) /* Metaclass */);           
             
     [self exchange_methods:@selector(application:openURL:options:)
                   swizzled:@selector(sw_application:openURL:options:)];
