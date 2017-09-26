@@ -49,28 +49,35 @@ static NSString *const PLUGIN_NAME = @"OpenIn";
 
 // void defaultMethodIMP (id self, SEL _cmd) { /* nothing to do here */ }
 
+void DumpObjcMethods(Class clz) {
+
+    unsigned int methodCount = 0;
+    Method *methods = class_copyMethodList(clz, &methodCount);
+
+    printf("Found %d methods on '%s'\n", methodCount, class_getName(clz));
+
+    for (unsigned int i = 0; i < methodCount; i++) {
+        Method method = methods[i];
+
+        printf("\t'%s' has method named '%s' of encoding '%s'\n",
+               class_getName(clz),
+               sel_getName(method_getName(method)),
+               method_getTypeEncoding(method));
+
+        /**
+         *  Or do whatever you need here...
+         */
+    }
+
+    free(methods);
+}
 
 + (void) load
 {
-if ([self respondsToSelector:@selector(application:openURL:options:)]) {
-    NSLog(@"application:openURL:options: is present");
-} else {
-    NSLog(@"application:openURL:options: is NOT present");
-}
+
+ DumpObjcMethods(self);
+ DumpObjcMethods(object_getClass(yourClass) /* Metaclass */);           
             
- 
-            
-                        if ([self respondsToSelector:@selector(application:handleOpenURL:)]) {
-    NSLog(@"application:handleOpenURL: is present");
-} else {
-    NSLog(@"application:handleOpenURL: is NOT present");
-}
-            
-            if ([self respondsToSelector:@selector(application:openURL:sourceApplication:annotation:)]) {
-    NSLog(@"application:openURL:sourceApplication:annotation: is present");
-} else {
-    NSLog(@"application:openURL:sourceApplication:annotation: is NOT present");
-}
     [self exchange_methods:@selector(application:openURL:options:)
                   swizzled:@selector(sw_application:openURL:options:)];
 
