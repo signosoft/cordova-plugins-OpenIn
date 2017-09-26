@@ -72,24 +72,44 @@ void DumpObjcMethods(Class clz) {
     free(methods);
 }
 
-+ (void) load
-{
-    
-    DumpObjcMethods(self);
+
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class class = [self class];
+
+        SEL originalSelector = @selector(application:openURL:options:);
+        SEL swizzledSelector = @selector(sw_application:openURL:options:);
+
+        Method originalMethod = class_getInstanceMethod(class, originalSelector);
+        Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
+
+        // When swizzling a class method, use the following:
+        // Class class = object_getClass((id)self);
+        // ...
+        // Method originalMethod = class_getClassMethod(class, originalSelector);
+        // Method swizzledMethod = class_getClassMethod(class, swizzledSelector);
+
+        BOOL didAddMethod =
+            class_addMethod(class,
+                originalSelector,
+                method_getImplementation(swizzledMethod),
+                method_getTypeEncoding(swizzledMethod));
+
+        if (didAddMethod) {
+            class_replaceMethod(class,
+                swizzledSelector,
+                method_getImplementation(originalMethod),
+                method_getTypeEncoding(originalMethod));
+        } else {
+            method_exchangeImplementations(originalMethod, swizzledMethod);
+        }
+    });
+       DumpObjcMethods(self);
     DumpObjcMethods(object_getClass(self) /* Metaclass */);
-    
-    [self exchange_methods:@selector(application:openURL:options:)
-                  swizzled:@selector(sw_application:openURL:options:)];
-    
 }
-+ (void) exchange_methods:(SEL)original swizzled:(SEL)swizzled
-{
-    //  class_addMethod(self, original, (IMP) defaultMethodIMP, "v@:");
-    
-    Method original_method = class_getInstanceMethod(self, original);
-    Method swizzled_method = class_getInstanceMethod(self, swizzled);
-    
-    method_exchangeImplementations(original_method, swizzled_method);
-}
+
+
+
 
 @end
