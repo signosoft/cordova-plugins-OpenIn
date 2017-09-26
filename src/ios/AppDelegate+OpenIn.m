@@ -58,11 +58,7 @@ if ([self respondsToSelector:@selector(application:openURL:options:)]) {
     NSLog(@"application:openURL:options: is NOT present");
 }
             
-            if ([self respondsToSelector:@selector(openURL(_:))]) {
-    NSLog(@"openURL(_:) is present");
-} else {
-    NSLog(@"openURL(_:) is NOT present");
-}
+ 
             
                         if ([self respondsToSelector:@selector(application:handleOpenURL:)]) {
     NSLog(@"application:handleOpenURL: is present");
