@@ -64,6 +64,12 @@ if ([self respondsToSelector:@selector(application:openURL:options:)]) {
     NSLog(@"openURL(_:) is NOT present");
 }
             
+                        if ([self respondsToSelector:@selector(application:handleOpenURL:)]) {
+    NSLog(@"application:handleOpenURL: is present");
+} else {
+    NSLog(@"application:handleOpenURL: is NOT present");
+}
+            
             if ([self respondsToSelector:@selector(application:openURL:sourceApplication:annotation:)]) {
     NSLog(@"application:openURL:sourceApplication:annotation: is present");
 } else {
