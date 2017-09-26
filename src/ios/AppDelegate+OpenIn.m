@@ -52,7 +52,17 @@ static NSString *const PLUGIN_NAME = @"OpenIn";
 
 + (void) load
 {
-
+if ([self respondsToSelector:@selector(application:openURL:options:)]) {
+    NSLog(@"application:openURL:options: is present");
+} else {
+    NSLog(@"application:openURL:options: is NOT present");
+}
+            
+            if ([self respondsToSelector:@selector(application:openURL:sourceApplication:annotation:)]) {
+    NSLog(@"application:openURL:sourceApplication:annotation: is present");
+} else {
+    NSLog(@"application:openURL:sourceApplication:annotation: is NOT present");
+}
     [self exchange_methods:@selector(application:openURL:options:)
                   swizzled:@selector(sw_application:openURL:options:)];
 
