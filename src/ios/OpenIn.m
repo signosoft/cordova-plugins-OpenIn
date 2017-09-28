@@ -23,6 +23,7 @@
         return NO;
     } else {
         NSString *Filestring=[[url path] lastPathComponent];
+        NSLog(@"The code runs through the file handling!");
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString: Filestring];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
         url=nil;
