@@ -32,7 +32,6 @@ static NSString *const PLUGIN_NAME = @"OpenIn";
     }
     NSLog( @"1st url is %@", [url absoluteString]);
     [plugin handleUrl:url];
-    NSLog(@"The code runs through here!");
     NSLog( @"2nd url is %@", [url absoluteString]);
 
     return YES;
