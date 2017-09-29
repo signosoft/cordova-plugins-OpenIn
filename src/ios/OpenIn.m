@@ -29,8 +29,7 @@
         url=nil;
         return YES;
     }
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString: Filestring];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
+
    
 }
 
