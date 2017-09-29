@@ -20,6 +20,7 @@
     NSLog(@"The code runs through handleurl!");
     if (! [[url scheme] isEqual:@"file"]) {
         NSLog(@"The code runs through not a file!");
+        [webView stringByEvaluatingJavaScriptFromString:@"handleOpenURL(url)"];
         return NO;
     } else {
         NSString *Filestring=[[url path] lastPathComponent];
