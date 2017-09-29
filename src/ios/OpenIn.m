@@ -18,7 +18,7 @@
 - (BOOL)handleUrl:(NSURL *)url {
     CDVPluginResult* pluginResult = nil;
     NSLog(@"The code runs through handleurl!");
-    if (! [[url scheme] isEqual:@"file"]) {
+/*    if (! [[url scheme] isEqual:@"file"]) {
         NSLog(@"The code runs through not a file!");
  
         return NO;
@@ -29,7 +29,10 @@
         [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
         url=nil;
         return YES;
-    }
+    }*/
+     NSString *Filestring=url.absoluteString;
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString: Filestring];
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];
    
 }
 
