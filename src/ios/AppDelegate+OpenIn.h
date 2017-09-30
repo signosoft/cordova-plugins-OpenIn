@@ -11,9 +11,13 @@
 #import <CoreData/CoreData.h>
 #import "Infrastructure.h"
 #import "DeepLinkController.h"
+#import "OSNavigationController.h"
 
 
 @interface AppDelegate (OpenIn)
+
+@property (strong, nonatomic) DeepLinkController *deepLinkController;
+@property (strong, nonatomic) NSMutableArray *trustedHosts;
 
 - (BOOL)application:(UIApplication *)app
                openURL:(NSURL *)url
@@ -21,3 +25,4 @@
 
 
 @end
+
