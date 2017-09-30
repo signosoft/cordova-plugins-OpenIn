@@ -7,11 +7,15 @@
 //
 
 #import "AppDelegate.h"
+#import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+#import "Infrastructure.h"
+#import "DeepLinkController.h"
 
 
 @interface AppDelegate (OpenIn)
 
-- (BOOL)sw_application:(UIApplication *)app
+- (BOOL)application:(UIApplication *)app
                openURL:(NSURL *)url
                options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options;
 
