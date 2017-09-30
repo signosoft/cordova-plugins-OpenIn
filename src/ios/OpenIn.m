@@ -1,8 +1,10 @@
 /********* OpenIn.m Cordova Plugin Implementation *******/
 
 #import "OpenIn.h"
+#import <objc/runtime.h>
 
 @implementation OpenIn
+    
 
 
 
