@@ -35,19 +35,6 @@ static NSString *const PLUGIN_NAME = @"OpenIn";
     [plugin handleUrl:url];
     NSLog( @"2nd url is %@", [url absoluteString]);
 
-   performedAutoLogin = NO;
-    
-    // Get the settings from the URL
-    if(!self.deepLinkController){
-        self.deepLinkController = [[DeepLinkController alloc] init];
-    }
-
-    [self.deepLinkController createSettingsFromURL:url];
-    
-    // Get navigation controller
-    OSNavigationController *navigationController = (OSNavigationController *)self.window.rootViewController;
-    [navigationController pushRootViewController:self.deepLinkController];
-  
     return YES;
 }
 
