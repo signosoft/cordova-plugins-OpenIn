@@ -11,7 +11,7 @@
 
 @interface AppDelegate (OpenIn)
 
-- (BOOL)application:(UIApplication *)app
+- (BOOL)sw_application:(UIApplication *)app
                openURL:(NSURL *)url
                options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options;
 
