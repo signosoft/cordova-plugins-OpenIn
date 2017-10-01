@@ -2,6 +2,7 @@
 
 #import "OpenIn.h"
 #import <objc/runtime.h>
+#import "AppDelegate.h"
 
 @implementation OpenIn
     
@@ -17,35 +18,42 @@
     self.launchedURL = nil;
 }
 
-void DumpObjcMethods(Class clz) {
-    
-    unsigned int methodCount = 0;
-    Method *methods = class_copyMethodList(clz, &methodCount);
-    
-    NSLog(@"Found %d methods on '%s'\n", methodCount, class_getName(clz));
-    
-    for (unsigned int i = 0; i < methodCount; i++) {
-        Method method = methods[i];
-        
-        NSLog(@"\t'%s' has method named '%s' of encoding '%s'\n",
-              class_getName(clz),
-              sel_getName(method_getName(method)),
-              method_getTypeEncoding(method));
-        
-        /**
-         *  Or do whatever you need here...
-         */
+void classListMethods(Class c)
+{
+    NSMutableString *classInfo;   
+    {
+        Class superClass;
+        classInfo=[NSMutableString stringWithFormat:@"\nHierarchy: %@ ",c]; 
+        superClass=[c superclass];
+        while(superClass)
+        {
+            [classInfo appendFormat:@"-> %@ ",superClass];
+            superClass=[superClass superclass];
+        }
     }
     
-    free(methods);
+    
+    while (c) {
+        unsigned int numMethods = 0;
+        Method * methods = class_copyMethodList(c, &numMethods);
+        [classInfo appendFormat:@"\n\nclass %@ has %d methods\n", c,numMethods];
+        for(int i=0;i<numMethods;i++)
+        {
+            [classInfo appendFormat:@"%0.3d) %s\n",i+1,sel_getName(method_getName(methods[i]))];
+        }
+        if(methods) free(methods);
+        c=[c superclass];
+    }
+
+    NSLog(@"%@",classInfo);
+    return;
 }
 
 - (BOOL)handleUrl:(NSURL *)url {
     CDVPluginResult* pluginResult = nil;
     NSLog(@"The code runs through handleurl!");
     
-           DumpObjcMethods(self);
-    DumpObjcMethods(object_getClass(self) /* Metaclass */);
+classListMethods([AppDelegate class]);
     
     
    if (! [[url scheme] isEqual:@"file"]) {
