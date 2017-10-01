@@ -14,12 +14,14 @@
 
 static NSString *const PLUGIN_NAME = @"OpenIn";
 
-- (BOOL)sw_application:(UIApplication *)app
+- (BOOL)application:(UIApplication *)app
                openURL:(NSURL *)url
                options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options;
 
 {
-
+NSMutableDictionary* dictionary = @{}.mutableCopy;
+[super application:app openURL:url
+sourceApplication:@&amp;quot;&amp;quot; annotation:dictionary]
     if (url == nil) {
 
         return NO;
