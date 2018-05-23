@@ -12,7 +12,9 @@ pluginNativeMethod = {
   UNSUBSCRIBE: 'jsUnsubscribeFromEvent'
 };
 
-var openin = {
+function OpenIn() {
+  var me = this;
+}
 
   /**
    * Subscribe to event.
@@ -21,13 +23,11 @@ var openin = {
 
    * @param {Function} callback - callback that is called when event is captured
    */
-  subscribe: function(callback) {
+  OpenIn.prototype.subscribe =  function(callback) {
     if (!callback) {
       console.warn('OpenIn: can\'t subscribe to event without a callback');
       return;
     }
-
- 
 
     var innerCallback = function(msg) {
       callback(msg);
@@ -36,7 +36,7 @@ var openin = {
     exec(innerCallback, null, PLUGIN_NAME, pluginNativeMethod.SUBSCRIBE,[]);
   }
 
- 
-};
-
-module.exports = openin;
+window.openIn = new OpenIn();
+window.plugins = window.plugins || {};
+window.plugins.openIn = window.openIn;
+module.exports = new OpenIn();

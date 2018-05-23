@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) NSURL* launchedURL;
 @property (strong) NSString* callbackId;
-
+@property (strong) NSString* unhandleURL;
 
 - (BOOL)handleUrl:(NSURL *)url;
 - (void)jsSubscribeForEvent:(CDVInvokedUrlCommand *)command;
