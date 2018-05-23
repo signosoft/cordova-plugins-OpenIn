@@ -1,5 +1,5 @@
 {
-  "name": "OpenIn",
+  "name": "cordova-plugin-openin",
   "version": "0.0.1",
   "description": "",
   "cordova": {
