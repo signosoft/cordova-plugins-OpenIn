@@ -21,8 +21,7 @@ static NSString *const PLUGIN_NAME = @"OpenIn";
 {
 NSMutableDictionary* dictionary = @{}.mutableCopy;
      if (! [[url scheme] isEqual:@"file"]) {
-[super application:app openURL:url
-sourceApplication:@"" annotation:dictionary];
+[super application:app openURL:url options:options];;
      }
     if (url == nil) {
 
