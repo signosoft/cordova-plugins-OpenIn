@@ -1,5 +1,5 @@
 //
-//  OpenIn.h
+//  openin.h
 //
 //
 //  Created by Denis Mulder on 9/18/17.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Cordova/CDV.h>
 
-@interface OpenIn : CDVPlugin
+@interface openin : CDVPlugin
 
 @property (nonatomic, strong) NSURL* launchedURL;
 @property (strong) NSString* callbackId;

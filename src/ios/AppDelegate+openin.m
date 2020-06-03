@@ -1,18 +1,18 @@
 //
-//  AppDelegate+OpenIn.m
+//  AppDelegate+openin.m
 //  MyApp
 //
 //  Created by Denis Mulder on 9/24/17.
 //
 //
 
-#import "AppDelegate+OpenIn.h"
-#import "OpenIn.h"
+#import "AppDelegate+openin.h"
+#import "openin.h"
 #import <objc/runtime.h>
 
-@implementation AppDelegate (OpenIn)
+@implementation AppDelegate (openin)
 
-static NSString *const PLUGIN_NAME = @"OpenIn";
+static NSString *const PLUGIN_NAME = @"openin";
 
 - (BOOL)application:(UIApplication *)app
                openURL:(NSURL *)url
@@ -29,7 +29,7 @@ NSMutableDictionary* dictionary = @{}.mutableCopy;
     }
     
     // get instance of the plugin and let it handle the url object
-    OpenIn *plugin = [self.viewController getCommandInstance:PLUGIN_NAME];
+    openin *plugin = [self.viewController getCommandInstance:PLUGIN_NAME];
     if (plugin == nil) {
 
         return NO;

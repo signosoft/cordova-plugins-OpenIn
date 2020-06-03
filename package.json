@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "",
   "cordova": {
-    "id": "cordova-plugin-OpenIn",
+    "id": "cordova-plugin-openin",
     "platforms": [
       "ios"
     ]

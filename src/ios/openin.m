@@ -1,8 +1,8 @@
-/********* OpenIn.m Cordova Plugin Implementation *******/
+/********* openin.m Cordova Plugin Implementation *******/
 
-#import "OpenIn.h"
+#import "openin.h"
 
-@implementation OpenIn
+@implementation openin
 
 
 

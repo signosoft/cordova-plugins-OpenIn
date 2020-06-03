@@ -3,7 +3,7 @@ var exec = require('cordova/exec'),
   channel = require('cordova/channel'),
 
   // Reference name for the plugin
-  PLUGIN_NAME = 'OpenIn',
+  PLUGIN_NAME = 'openin',
 
 
 // Plugin methods on the native side that can be called from JavaScript
@@ -12,7 +12,7 @@ pluginNativeMethod = {
   UNSUBSCRIBE: 'jsUnsubscribeFromEvent'
 };
 
-function OpenIn() {
+function openin() {
   var me = this;
 }
 
@@ -23,7 +23,7 @@ function OpenIn() {
 
    * @param {Function} callback - callback that is called when event is captured
    */
-  OpenIn.prototype.subscribe =  function(callback) {
+  openin.prototype.subscribe =  function(callback) {
     if (!callback) {
       console.warn('OpenIn: can\'t subscribe to event without a callback');
       return;
@@ -36,7 +36,7 @@ function OpenIn() {
     exec(innerCallback, null, PLUGIN_NAME, pluginNativeMethod.SUBSCRIBE,[]);
   }
 
-window.openIn = new OpenIn();
+window.openIn = new openin();
 window.plugins = window.plugins || {};
 window.plugins.openIn = window.openIn;
-module.exports = new OpenIn();
+module.exports = new openin();
